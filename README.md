@@ -108,3 +108,91 @@ O código a seguir cria e multiplica matrizes, com as funções 'cria_matriz' e 
                 n_linha += 1
 
             return(matriz3)
+
+JOGO DO NIM
+
+Um jogo que não é possível vencer, porque o computador trapassa.
+
+    def main():
+        print("Bem-vindo ao jogo do NIM! Escolha: ")
+        print()
+        print("1 - para jogar uma partida isolada")
+        x = int(input("2 - para jogar um campeonato "))
+        if x == 1:
+            print()
+            print("Voce escolheu uma partida isolada!")
+            partida()
+        if x == 2:
+            print()
+            print("Voce escolheu um campeonato!")
+            campeonato()
+
+
+    def usuario_escolhe_jogada(n, m):
+        x = int(input("Quantas peças você vai tirar? "))
+        while x > m:
+            print("Ooops! Jogada inválida! Tente de novo.")
+            print()
+            x = int(input("Quantas peças você vai tirar? "))
+
+        print("Você tirou", x, "peça(s)")
+        n = n - x
+        print("Agora resta(m) apenas", n, "peça(s) no tabuleiro")
+        print()
+        computador_escolhe_jogada(n, m)
+
+        return x
+
+
+
+    def computador_escolhe_jogada(n, m):
+        x = 1
+        while (n - x) % (m + 1) != 0 and x <= m and x <= n:
+            x += 1
+
+
+        n = n - x
+
+        print()
+        print("O computador tirou", x, "peça(s)")
+        print("Agora resta(m)", n, "peça(s) no tabuleiro.")
+        print()
+        if n == 0:
+            print()
+            print("Fim do jogo! O computador ganhou!")
+
+        else:
+            usuario_escolhe_jogada(n, m)
+
+        return x
+
+    def partida():
+        n = int(input("Quantas peças? "))
+        m = int(input("Limite de peças por jogada? "))
+
+        if n % (m +1) == 0:
+            print()
+            print("Voce começa!")
+            usuario_escolhe_jogada(n, m)
+
+        else:
+            print()
+            print("Computador começa!")
+            computador_escolhe_jogada(n, m)
+
+
+    def campeonato():
+        z = 1
+        while z <= 3:
+            print()
+            print("**** Rodada", z, "****")
+            print()
+            z += 1
+            partida()
+
+        if z == 4:
+            print("**** Final do campeonato! ****")
+            print()
+            print("Placar: Você 0 x 3 Computador")
+
+    main()
