@@ -1,3 +1,5 @@
+#Feito em grupo na FIAP
+
 restaurants_list = [
     {
         "name": "Lamen Kazu",
